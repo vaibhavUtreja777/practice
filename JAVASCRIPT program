@@ -1,0 +1,229 @@
+//Prompted Write a code for js in which when a button is clicked it prints its multiplication table.
+<!DOCTYPE html>
+<html>
+<head>
+<title>Multiplication Table</title>
+<script>
+function printTable() {
+  var num = document.getElementById("num").value;
+  var out = "";
+  for (var i = 1; i <= 10; i++) {
+    out += i + " * " + num + " = " + i * num + "<br/>";
+  }
+  document.getElementById("result").innerHTML = out;
+}
+</script>
+</head>
+<body>
+<h1>Multiplication Table</h1>
+<input type="text" id="num" placeholder="Enter a number" />
+<input type="button" value="Print Table" onclick="printTable()" />
+<p id="result"></p>
+</body>
+</html>
+//Prompted print the largest number given by user js
+<!DOCTYPE html>
+<html>
+<head>
+<title>Largest Number</title>
+<script>
+function getLargestNumber() {
+  var num1 = prompt("Enter the first number:");
+  var num2 = prompt("Enter the second number:");
+  var num3 = prompt("Enter the third number:");
+  var largest = num1;
+  if (num2 > largest) {
+    largest = num2;
+  }
+  if (num3 > largest) {
+    largest = num3;
+  }
+  return largest;
+}
+</script>
+</head>
+<body>
+<h1>Largest Number</h1>
+<p>The largest number is: <b><span id="largest"></span></b></p>
+<button onclick="document.getElementById('largest').innerHTML = getLargestNumber()">Get Largest Number</button>
+</body>
+</html>
+///find the factorial of number entered by user
+function factorial(n) {
+  if (n < 0) {
+    return "The factorial of a negative number is not defined.";
+  } else if (n === 0 || n === 1) {
+    return 1;
+  } else {
+    var factorial = 1;
+    for (var i = 2; i <= n; i++) {
+      factorial *= i;
+    }
+    return factorial;
+  }
+}
+
+var number = prompt("Enter a number:");
+var factorial = factorial(number);
+console.log("The factorial of " + number + " is " + factorial);
+
+
+
+
+
+///create a student registration form using text radio button,check box,,drop down box,,text field and all otherrequired HTML elements.Customize the css and javascriptto input and validate all data.create function to valdate each example                   
+a)Roll no is  a 7digit numeric value 
+b)name should be an alphabetic value(string) 
+c)Non empty and valid fiels like DOB
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Registration Form</title>
+<style>
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+form {
+  width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+button {
+  background-color: #000;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+</style>
+<script>
+function validateRollNo() {
+  var rollNo = document.getElementById("rollNo").value;
+  if (rollNo.length != 7) {
+    alert("Roll number must be a 7-digit numeric value.");
+    return false;
+  }
+  for (var i = 0; i < rollNo.length; i++) {
+    if (!isNaN(rollNo[i])) {
+      return true;
+    }
+  }
+  alert("Roll number must be a 7-digit numeric value.");
+  return false;
+}
+
+function validateName() {
+  var name = document.getElementById("name").value;
+  if (!name.match(/^[a-zA-Z]+$/)) {
+    alert("Name must be an alphabetic value.");
+    return false;
+  }
+  return true;
+}
+
+function validateDOB() {
+  var dob = document.getElementById("dob").value;
+  if (!dob.match(/^\d{4}-\d{2}-\d{2}$/)) {
+    alert("Date of birth must be in the format YYYY-MM-DD.");
+    return false;
+  }
+  return true;
+}
+</script>
+</head>
+<body>
+<form onsubmit="return validateForm()">
+<h1>Student Registration Form</h1>
+<label for="rollNo">Roll number:</label>
+<input type="text" id="rollNo" name="rollNo" />
+<br>
+<label for="name">Name:</label>
+<input type="text" id="name" name="name" />
+<br>
+<label for="gender">Gender:</label>
+<input type="radio" id="male" name="gender" value="male" /> Male
+<input type="radio" id="female" name="gender" value="female" /> Female
+<br>
+<label for="dob">Date of birth:</label>
+<input type="text" id="dob" name="dob" />
+<br>
+<label for="course">Course:</label>
+<select id="course" name="course">
+<option value="BCA">BCA</option>
+<option value="BBA">BBA</option>
+<option value="BTech">BTech</option>
+</select>
+<br>
+<input type="submit" value="Submit" />
+</form>
+</body>
+</html>
+
+
+//Prompted enter a list of positive number using the prompt terminated by a zero.find the sum and averageof these numbers injs
+function promptNumber() {
+  var number = prompt("Enter a positive number:");
+  if (number === "0") {
+    return;
+  } else if (isNaN(number)) {
+    alert("Invalid number.");
+    return;
+  } else {
+    return parseInt(number);
+  }
+}
+
+function findSum(numbers) {
+  var sum = 0;
+  for (var i = 0; i < numbers.length; i++) {
+    sum += numbers[i];
+  }
+  return sum;
+}
+
+function findAverage(sum, numbers) {
+  var average = sum / numbers.length;
+  return average;
+}
+
+var numbers = [];
+var number;
+
+while (true) {
+  number = promptNumber();
+  if (number === "0") {
+    break;
+  } else {
+    numbers.push(number);
+  }
+}
+
+var sum = findSum(numbers);
+var average = findAverage(sum, numbers);
+
+console.log("The sum of the numbers is " + sum);
+console.log("The average of the numbers is " + average);
+
+

@@ -66,6 +66,50 @@ function factorial(n) {
 var number = prompt("Enter a number:");
 var factorial = factorial(number);
 console.log("The factorial of " + number + " is " + factorial);
+'''
+//Prompted enter a list of positive number using the prompt terminated by a zero.find the sum and averageof these numbers injs
+function promptNumber() {
+  var number = prompt("Enter a positive number:");
+  if (number === "0") {
+    return;
+  } else if (isNaN(number)) {
+    alert("Invalid number.");
+    return;
+  } else {
+    return parseInt(number);
+  }
+}
+
+function findSum(numbers) {
+  var sum = 0;
+  for (var i = 0; i < numbers.length; i++) {
+    sum += numbers[i];
+  }
+  return sum;
+}
+
+function findAverage(sum, numbers) {
+  var average = sum / numbers.length;
+  return average;
+}
+
+var numbers = [];
+var number;
+
+while (true) {
+  number = promptNumber();
+  if (number === "0") {
+    break;
+  } else {
+    numbers.push(number);
+  }
+}
+
+var sum = findSum(numbers);
+var average = findAverage(sum, numbers);
+
+console.log("The sum of the numbers is " + sum);
+console.log("The average of the numbers is " + average);
 
 
 
@@ -182,48 +226,5 @@ function validateDOB() {
 </html>
 
 
-//Prompted enter a list of positive number using the prompt terminated by a zero.find the sum and averageof these numbers injs
-function promptNumber() {
-  var number = prompt("Enter a positive number:");
-  if (number === "0") {
-    return;
-  } else if (isNaN(number)) {
-    alert("Invalid number.");
-    return;
-  } else {
-    return parseInt(number);
-  }
-}
-
-function findSum(numbers) {
-  var sum = 0;
-  for (var i = 0; i < numbers.length; i++) {
-    sum += numbers[i];
-  }
-  return sum;
-}
-
-function findAverage(sum, numbers) {
-  var average = sum / numbers.length;
-  return average;
-}
-
-var numbers = [];
-var number;
-
-while (true) {
-  number = promptNumber();
-  if (number === "0") {
-    break;
-  } else {
-    numbers.push(number);
-  }
-}
-
-var sum = findSum(numbers);
-var average = findAverage(sum, numbers);
-
-console.log("The sum of the numbers is " + sum);
-console.log("The average of the numbers is " + average);
 
 

@@ -1,0 +1,502 @@
+# This Python 3 environment comes with many helpful analytics libraries installed
+# It is defined by the kaggle/python Docker image: https://github.com/kaggle/docker-python
+# For example, here's several helpful packages to load
+
+import numpy as np # linear algebra
+import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
+
+# Input data files are available in the read-only "../input/" directory
+# For example, running this (by clicking run or pressing Shift+Enter) will list all files under the input directory
+
+import os
+for dirname, _, filenames in os.walk('/kaggle/input'):
+    for filename in filenames:
+        print(os.path.join(dirname, filename))
+
+# You can write up to 20GB to the current directory (/kaggle/working/) that gets preserved as output when you create a version using "Save & Run All" 
+# You can also write temporary files to /kaggle/temp/, but they won't be saved outside of the current session
+import numpy as np
+
+#a. Create a two-dimensional array ARR1 with random values from 0 to 1.
+
+ARR1 = np.random.rand(3, 4)
+
+#Compute the mean, standard deviation, and variance of ARR1 along the second axis.
+
+mean_arr1 = np.mean (ARR1, axis=1)
+
+std_dev_arr1 = np.std(ARR1, axis=1)
+
+variance_arr1 = np.var(ARR1, axis=1)
+
+print("a. ARR1:")
+
+print(ARR1)
+
+print("Mean along axis 1:", mean_arr1)
+
+print("Standard Deviation along axis 1:", std_dev_arr1)
+
+print("Variance along axis 1:", variance_arr1)
+
+print("\n")
+a. ARR1:
+[[0.6263789  0.23254374 0.18217257 0.66560973]
+ [0.21142961 0.14613625 0.21147606 0.15186097]
+ [0.07388675 0.66570965 0.12921544 0.32451421]]
+Mean along axis 1: [0.42667623 0.18022572 0.29833151]
+Standard Deviation along axis 1: [0.22047666 0.03129264 0.23163977]
+Variance along axis 1: [0.04860996 0.00097923 0.05365698]
+
+
+import numpy as np
+
+#b. Create a 2-dimensional array of size m x n with integer elements.
+
+m = int(input("Enter the number of rows (m): "))
+
+n = int(input("Enter the number of columns (n): "))
+
+ARR2 = np.random.randint(0, 10, size=(m, n))
+
+# Print the shape, type, and data type of the array.
+
+print("b. ARR2:")
+
+print(ARR2)
+
+print("Shape:", ARR2.shape)
+
+print("Type:", type(ARR2))
+
+print("Data Type:", ARR2.dtype)
+
+#Reshape the array into an n x m array.
+
+ARR2_reshaped = ARR2.reshape((n, m))
+
+print("Reshaped ARR2:")
+print(ARR2_reshaped)
+
+print("\n")
+---------------------------------------------------------------------------
+StdinNotImplementedError                  Traceback (most recent call last)
+Cell In[3], line 5
+      1 import numpy as np
+      3 #b. Create a 2-dimensional array of size m x n with integer elements.
+----> 5 m = int(input("Enter the number of rows (m): "))
+      7 n = int(input("Enter the number of columns (n): "))
+      9 ARR2 = np.random.randint(0, 10, size=(m, n))
+
+File /opt/conda/lib/python3.10/site-packages/ipykernel/kernelbase.py:1201, in Kernel.raw_input(self, prompt)
+   1199 if not self._allow_stdin:
+   1200     msg = "raw_input was called, but this frontend does not support input requests."
+-> 1201     raise StdinNotImplementedError(msg)
+   1202 return self._input_request(
+   1203     str(prompt),
+   1204     self._parent_ident["shell"],
+   1205     self.get_parent("shell"),
+   1206     password=False,
+   1207 )
+
+StdinNotImplementedError: raw_input was called, but this frontend does not support input requests.
+import numpy as np
+
+#c. Test whether the elements of a given 1D array are zero, non-zero, and NaN
+
+ARR3 = np.array([0, 1, 2, 0, np.nan, 4, 5, 0])
+
+zero_indices = np.where (ARR3 == 0)[0]
+
+nonzero_indices = np.where (ARR3 != 0)[0]
+
+nan_indices = np.where (np.isnan(ARR3))[0]
+
+print("c. ARR3:")
+
+print(ARR3)
+
+print("Zero Indices:", zero_indices)
+
+print("Nonzero Indices:", nonzero_indices)
+
+print("NaN Indices:", nan_indices)
+
+print("\n")
+import numpy as np
+
+#d. Find covariance and correlation of Array1 with Array4 and Array5 respectively.
+
+Array1 = np.random.randn(3,4)
+Array2 = np.random.randn(3,4)
+Array3 = np.random.randn(3,4)
+
+Array4 = Array3 - Array2
+
+Array5 = 2 * Array1
+
+covariance_arr1_arr4 = np.cov(Array1.flatten(), Array4.flatten())[0, 1]
+
+correlation_arr1_arr5 = np.corrcoef(Array1.flatten(), Array5.flatten())[0, 1]
+
+print("d. Array1:")
+
+print(Array1)
+
+print("Array4:")
+
+print(Array4)
+
+print("Array5:")
+
+print(Array5)
+
+print("Covariance of Array1 and Array4:", covariance_arr1_arr4)
+
+print("Correlation of Array1 and Array5:", correlation_arr1_arr5)
+import numpy as np
+
+#e. Create two random arrays of the same size (10): Array1 and Array2.
+#Find the sum of the first half of both arrays and the product of the second half of both arrays.
+
+Array1_e = np.random.rand(10)
+
+Array2_e = np.random.rand(10)
+
+sum_first_half = np.sum(Array1_e[:5]) + np.sum(Array2_e[:5])
+
+product_second_half = np.prod(Array1_e[5:]) * np.prod(Array2_e[5:])
+
+print("e. Array1:")
+
+print(Array1_e)
+
+print("Array2:")
+
+print(Array2_e)
+
+print("Sum of the first half of both arrays:", sum_first_half)
+
+print("Product of the second half of both arrays:", product_second_half)
+
+print("\n")
+import numpy as np
+
+# Create a random array
+random_array = np.random.rand(3, 4)
+
+# Determine the size of the memory occupied by the array.
+memory_size = random_array.nbytes
+
+# Print the results
+print("f. Random Array:")
+print(random_array)
+print("Memory Size:", memory_size, "bytes")
+print("\n")
+import numpy as np
+
+# Create a random array
+ARR_g = np.random.randint(10, 100, size=(4, 3))
+
+# Swap any two rows
+row1, row2 = 1, 2
+ARR_g_swapped_rows = ARR_g.copy()
+ARR_g_swapped_rows[[row1, row2], :] = ARR_g_swapped_rows[[row2, row1], :]
+
+# Reverse a specified column
+specified_column = 1
+ARR_g_reversed_column = ARR_g.copy()
+ARR_g_reversed_column[:, specified_column] = np.flipud(ARR_g_reversed_column[:, specified_column])
+
+# Print the results
+print("g. Original Array:")
+print(ARR_g)
+
+print("Array with swapped rows:")
+print(ARR_g_swapped_rows)
+
+print("Array with reversed column:")
+print(ARR_g_reversed_column)
+Q2
+
+import pandas as pd
+
+# Create a series with 5 elements
+series_a = pd.Series([4, 2, 7, 1, 5], index=['b', 'a', 'e', 'd', 'c'])
+
+# Display the series sorted on index.
+sorted_by_index = series_a.sort_index()
+
+# Display the series sorted on values.
+sorted_by_values = series_a.sort_values()
+
+print("a. Original Series:")
+print(series_a)
+print("\nSorted by Index:")
+print(sorted_by_index)
+print("\nSorted by Values:")
+print(sorted_by_values)
+import pandas as pd
+
+# Create a series with N elements with some duplicate values
+series_b = pd.Series([4, 2, 7, 1, 5, 2, 1, 4, 7])
+
+# Find the minimum ranks assigned to the values using 'first' method
+min_ranks = series_b.rank(method='first')
+
+# Find the maximum ranks assigned to the values using 'max' method
+max_ranks = series_b.rank(method='max')
+
+print("b. Original Series:")
+print(series_b)
+print("\nMinimum Ranks (using 'first' method):")
+print(min_ranks)
+print("\nMaximum Ranks (using 'max' method):")
+print(max_ranks)
+import pandas as pd
+
+# Create a Series
+series_b = pd.Series([1, 5, 3, 2, 4])
+
+# Find the index value of the minimum and maximum element
+min_index_value = series_b.idxmin()
+max_index_value = series_b.idxmax()
+
+# Print the results
+print("c. Original Series:")
+print(series_b)
+
+print("\nIndex value of the Minimum Element:", min_index_value)
+print("Index value of the Maximum Element:", max_index_value)
+Q3
+
+import pandas as pd
+import numpy as np
+
+#Set a seed for reproducibility
+
+np.random.seed(42)
+
+#Creating a DataFrame with 3 columns and 50 rows
+
+data = {'Column1': np.random.rand(50),
+
+                     'Column2': np.random.rand(50),
+
+                            'Column3': np.random.rand(50)}
+
+df = pd.DataFrame(data)
+
+#Introduce null values (10% of the values)
+
+null_indices = np.random.choice(df.size, size=int(0.1 * df.size), replace=False)
+df.values.ravel() [null_indices] = np.nan
+
+#a. Identify and count missing values
+
+missing_values = df.isnull().sum().to_frame(name='Missing Values')
+
+print("a. Missing Values:")
+
+print(missing_values)
+
+#b. Drop the column having more than 5 null values
+
+df = df.dropna(axis=1, thresh= len(df) - 5)
+
+print("\nb. DataFrame after dropping columns:")
+
+print(df)
+#c. Identify the row label having the maximum sum and drop that row
+
+max_sum_row_label = df.sum(axis=1).idxmax()
+df = df.drop(max_sum_row_label)
+
+print("\nc. DataFrame after dropping row with maximum sum:")
+
+print(df)
+
+#d. Sort the DataFrame based on the first column
+
+df = df.sort_values(by='Column1')
+print("\nd. DataFrame sorted based on Column1:")
+print(df)
+#e. Remove duplicates from the first column
+
+df = df.drop_duplicates(subset= 'Column1')
+print("\ne. DataFrame after removing duplicates from Column1:")
+print(df)
+#f. Find the correlation and covariance
+
+correlation = df['Column1'].corr(df['Column2'])
+
+covariance = df['Column2'].cov(df['Column3'])
+
+print("\nf. Correlation between Column1 and Column2:", correlation)
+print(" Covariance between Column2 and Column3:", covariance)
+#g. Discretize the second column and create 5 bins
+
+df['Column2_bins'] = pd.cut(df['Column2'], bins=5)
+print("\ng. Discretized DataFrame:")
+print(df)
+Q4
+
+import pandas as pd
+
+# Read the two Excel files into Pandas DataFrames
+df1 = pd.read_excel('./workshop1.xlsx')
+df2 = pd.read_excel('./workshop2.xlsx')
+
+# Drop the 'Unnamed: 0' column from both DataFrames
+df1.drop('Unnamed: 0', axis=1, inplace=True)
+df2.drop('Unnamed: 0', axis=1, inplace=True)
+
+# (a.) Part
+# Merge the two DataFrames on the 'Name' and 'Date' columns
+both_workshops = pd.merge(df1, df2, on=['Name', 'Date'], how='inner')
+
+# Get a list of the names of students who attended both workshops
+both_workshops_names = both_workshops['Name'].unique()
+
+# Print the names of students who attended both workshops
+print("\n(a.) part")
+print(f"Names of students who attended both workshops: {both_workshops_names}")
+
+# (b.) Part
+# Concatenate the two DataFrames and drop any duplicate rows
+single_workshop = pd.concat([df1, df2]).drop_duplicates(keep=False)
+
+# Get a list of the names of students who attended a single workshop
+single_workshop_names = single_workshop['Name'].unique()
+
+# Print the names of students who attended a single workshop
+print("\n(b.) part")
+print(f"Names of students who attended a single workshop only: {single_workshop_names}")
+
+# (c.) Part
+# Concatenate the two DataFrames, ignoring the index
+merged_df = pd.concat([df1, df2], ignore_index=True)
+
+# Get the total number of records in the merged DataFrame
+total_records = merged_df.shape[0]
+
+# Print the total number of records in the merged DataFrame
+print("\n(c.) part")
+print(f"Total number of records in the merged dataframe: {total_records}")
+
+# (d.) Part
+# Concatenate the two DataFrames using keys, to create a hierarchical DataFrame
+merged_df = pd.concat([df1, df2], keys=['Workshop 1', 'Workshop 2'])
+
+# Calculate descriptive statistics for the hierarchical DataFrame, grouped by 'Name' and 'Date'
+stats = merged_df.groupby(['Name', 'Date']).describe()
+
+# Print the descriptive statistics for the hierarchical DataFrame
+print("\n(d.) part")
+print("Descriptive statistics for the hierarchical dataframe: \n{stats}")
+import numpy as np
+import pandas as pd
+
+import matplotlib.pyplot as plt
+
+# Load Titanic dataset
+titanic_data = pd.read_csv("E:\Domains\Data Analysis and Visualization\Practicals\\titanic data Titanic-Dataset.csv')
+
+# (a.) Clean the data by dropping the column with the Largest number of missing values
+print("(a.)")
+column_with_most_missing_values = titanic_data.isnull().sum().idxmax()
+titanic_data_cleaned = titanic_data.drop(columns=[column_with_most_missing_values])
+print(titanic_data_cleaned.head())
+
+# (b.) Find total number of passengers with age more than 30
+print("\n(b.)")
+
+passengers_age_more_than_30 = titanic_data_cleaned[titanic_data_cleaned['Age'] > 30]
+total_passengers_age_more_than_30 = len(passengers_age_more_than_30)
+
+print("Total no. passengers with age more than 30 =",total_passengers_age_more_than_30)
+
+# (c.) Find total fare paid by passengers of second class
+print("\n(c.)")
+
+total_fare_second_class = titanic_data_cleaned.loc[titanic_data_cleaned['Pclass'] == 2, 'Fare'].sum()
+print("Total fare paid by passengers of second class=",total_fare_second_class)
+
+# (d.) Compare the number of survivors of each passenger class
+print("\n(d.)")
+survivors_by_class = titanic_data_cleaned.groupby('Pclass')['Survived'].sum()
+print(survivors_by_class)
+
+# (e.) Compute descriptive statistics for the age attribute gender-wise
+print("\n(e.)")
+
+age_stats_gender_wise = titanic_data_cleaned.groupby('Sex')['Age'].describe()
+print("Descriptive Statistics for age attribute(gender-wise) =",age_stats_gender_wise)
+
+# (f.) Draw a scatter plot for passenger fare paid by Female and Male passengers separately
+print("\n(f.)")
+
+plt.figure(figsize=(8, 6))
+plt.scatter(titanic_data_cleaned[titanic_data_cleaned['sex'] == 'female']['PassengerId'],
+titanic_data_cleaned[titanic_data_cleaned['sex'] == 'female']['Fare'], label='Female', alpha=0.5)
+
+plt.scatter(titanic_data_cleaned[titanic_data_cleaned['Sex'] == 'male']['PassengerId'],
+titanic_data_cleaned[titanic_data_cleaned['sex'] == 'male']['Fare'], label="Male", alpha=0.5)
+
+plt.title('Scatter Plot: Passenger Fare Paid by Female and Male Passengers')
+plt.xlabel('Passenger ID')
+
+plt.ylabel('Fare')
+plt.legend()
+
+plt.show()
+Q7
+
+import pandas as pd
+
+#Creating the DataFrame
+
+data = {
+'FamilyName': ['Shah', 'Vats', 'Vats', 'Kumar', 'Vats', 'Kumar', 'Shah', 'Shah', 'Kumar', 'Vats'],
+'Gender': ['Male', 'Male', 'Female', 'Female', 'Female', 'Male', 'Male', 'Female', 'Female', 'Male'],
+'MonthlyIncome': [44000.00, 65000.00, 43150.00, 66500.00, 255000.00, 103000.00, 55000.00, 112400.00, 81030.00, 71900.00]
+}
+
+df = pd.DataFrame(data)
+
+#a. Calculate and display familywise gross monthly income
+
+familywise_gross_income = df.groupby ('FamilyName')['MonthlyIncome'].sum().reset_index()
+print("a. Familywise Gross Monthly Income:")
+
+print(familywise_gross_income)
+
+# b. Display the highest and lowest monthly Income for each family name
+highest_lowest_income = df.groupby('FamilyName')['MonthlyIncome'].agg(['max', 'min']).reset_index()
+print("\nb. Highest and Lowest Monthly Income for Each Family Name:")
+
+print(highest_lowest_income)
+
+#c. Calculate and display monthly income of all members earning income less than Rs. 80000.00
+
+income_below_80000 = df[df['MonthlyIncome'] <80000.00]
+
+print("\nc. Monthly Income of Members Earning Less than Rs. 80000.00:")
+
+print(income_below_80000)
+
+#d. Display total number of females along with their average monthly income
+
+female_stats = df[df['Gender'] == 'Female'].agg({'Gender': 'count', 'MonthlyIncome': 'mean'}).rename(
+{'Gender': 'Total Females', 'MonthlyIncome': 'Average Monthly Income'})
+print("\nd. Total Number of Females Along with Their Average Monthly Income:")
+print(female_stats)
+
+#e. Delete rows with Monthly income less than the average income of all members
+
+average_income = df['MonthlyIncome'].mean()
+df = df[df['MonthlyIncome'] >= average_income]
+
+print("\ne. DataFrame after deleting rows with Monthly Income less than the average income:")
+
+print(df)
